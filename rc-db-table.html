@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`rc-db-table`可用来显示数据库表的内容。
+
+@demo demo/index.html
+-->
+
+<dom-module id="rc-db-table">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'rc-db-table',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'rc-db-table',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
