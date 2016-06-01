@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="rc-db-column.html">
 
 <!--
 `rc-db-table`可用来显示数据库表的内容。
@@ -11,9 +12,48 @@
     <style>
       :host {
         display: block;
+        width: 220px;
+        border-radius: 5px;
+        border: 1px solid #44B9DB;
+      }
+
+      #header, #column, #desc {
+        padding: 5px 10px 5px 10px;
+      }
+
+      #header{
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+        background-color: #44B9DB;
+      }
+
+      #desc{
+        text-align: center;
+        background-color: #FFD67D;
+      }
+
+      #column{
+        /*text-align: center;*/
+        background-color: #FFF;
+        border-radius: 0 0 5px 5px;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <!-- <h2>Hello [[prop1]]</h2> -->
+    <div class="">
+      <div id="header">
+        [[tableName]]
+      </div>
+      <div id="desc">
+        [[desc]]
+      </div>
+      <div id="column">
+        <!-- name:char(20) -->
+        <template is="dom-repeat" items="{{columns}}">
+          <!-- <p>{{ item }}</p> -->
+          <rc-db-column column-object="{{item}}"></rc-db-column>
+        </template>
+      </div>
+    </div>
   </template>
 
   <script>
@@ -22,9 +62,24 @@
       is: 'rc-db-table',
 
       properties: {
-        prop1: {
+        tableName: {
           type: String,
-          value: 'rc-db-table',
+          notify: true,
+          value: 'tableName',
+        },
+        desc: {
+          type: String,
+          notify: true,
+          value: 'desc',
+        },
+        columns: {
+          type: Array,
+          notify: true,
+          value: [
+            {isPrimaryKey: true, isUnique: true, isAllowNull: true, isForeignKey: true, name: "id", type: "char(10)"},
+            {isPrimaryKey: false, isUnique: true, isAllowNull: true, isForeignKey: true, name: "name", type: "char(20)"},
+            {isPrimaryKey: false, isUnique: false, isAllowNull: true, isForeignKey: false, name: "desc", type: "char(20)"},
+          ]
         },
       },
 

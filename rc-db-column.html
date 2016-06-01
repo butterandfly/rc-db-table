@@ -1,0 +1,97 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/hardware-icons.html">
+<link rel="import" href="../iron-icons/communication-icons.html">
+
+<dom-module id="rc-db-column">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      div{
+        display: flex;
+        margin: 6px 0;
+      }
+
+      div > span{
+        flex: 1;
+      }
+
+      div > span:nth-of-type(1){
+        margin-right: 5px;
+      }
+
+      div > span:nth-of-type(1) > ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      div > span:nth-of-type(1) > ul > li {
+        color: #FF9800;
+        /*width: 12px;
+        height: 12px;*/
+        line-height: 12px;
+        list-style: none;
+        flex: 1;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      iron-icon {
+        width: 12px;
+        height: 12px;
+      }
+
+      div > span:nth-last-of-type(1){
+        color: gray;
+      }
+
+    </style>
+
+    <div>
+      <span>
+        <ul>
+          <li>
+            <!-- <template is="dom-if" if="{{columnObject.isPrimaryKey}}">
+              <iron-icon icon="communication:vpn-key"></iron-icon>
+            </template> -->
+            <iron-icon hidden$="{{!columnObject.isPrimaryKey}}" icon="communication:vpn-key"></iron-icon>
+          </li>
+          <li>
+            <!-- <template id="check" is="dom-if" if="{{columnObject.isForeignKey}}"> -->
+            <iron-icon hidden$="{{!columnObject.isForeignKey}}" icon="hardware:keyboard-backspace"></iron-icon>
+            <!-- </template> -->
+          </li>
+          <li>
+            <!-- <template is="dom-if" if="{{columnObject.isUnique}}">
+              U
+            </template> -->
+            <span hidden$="{{!columnObject.isUnique}}">U</span>
+          </li>
+          <li>
+            <!-- <template is="dom-if" if="{{columnObject.isAllowNull}}">
+              [ ]
+            </template> -->
+            <span hidden$="{{!columnObject.isAllowNull}}">[ ]</span>
+          </li>
+        </ul>
+      </span>
+      <span id="name">[[columnObject.name]]</span>
+      <span id="type">[[columnObject.type]]</span>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'rc-db-column',
+
+      properties: {
+        columnObject: Object,
+      }
+
+    });
+  </script>
+</dom-module>
