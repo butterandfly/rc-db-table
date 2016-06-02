@@ -52,16 +52,16 @@
       <span id="check">
         <ul>
           <li>
-            <iron-icon hidden$="{{!isPrimaryKey}}" icon="communication:vpn-key"></iron-icon>
+            <iron-icon hidden$="[[!isPrimaryKey]]" icon="communication:vpn-key"></iron-icon>
           </li>
           <li>
-            <iron-icon hidden$="{{!isForeignKey}}" icon="hardware:keyboard-backspace"></iron-icon>
+            <iron-icon hidden$="[[!isForeignKey]]" icon="hardware:keyboard-backspace"></iron-icon>
           </li>
           <li>
-            <span hidden$="{{!isUnique}}">U</span>
+            <span hidden$="[[!isUnique]]">U</span>
           </li>
           <li>
-            <span hidden$="{{!isAllowNull}}">[ ]</span>
+            <span hidden$="[[!isAllowNull]]">[ ]</span>
           </li>
         </ul>
       </span>
@@ -95,7 +95,7 @@
           value: false,
         },
       },
-
     });
+
   </script>
 </dom-module>
