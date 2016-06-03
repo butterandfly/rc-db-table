@@ -1,5 +1,6 @@
 {
   "name": "rc-db-table",
+  "version": "0.1.0",
   "description": "A table displayer of database.",
   "main": "rc-db-table.html",
   "dependencies": {

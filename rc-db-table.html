@@ -58,18 +58,46 @@
       is: 'rc-db-table',
 
       properties: {
+        /**
+         * 表名。
+         * @type String
+         */
         tableName: {
           type: String,
-          notify: true,
+          notify: true
         },
+        
+        /**
+         * 表的描述。
+         * @type String
+         */
         desc: {
           type: String,
-          notify: true,
+          notify: true
         },
+        
+        /**
+         * 所含列。
+         *
+         * ### 格式
+         *
+         * ```
+         * [{
+         *   "isPrimaryKey": false,
+         *   "isUnique": false,
+         *   "isAllowNull": true,
+         *   "isForeignKey": false,
+         *   "name": "column1",
+         *   "type": "char(20)"
+         * }]
+         * ```
+         *
+         * @type {Array}
+         */
         columns: {
           type: Array,
-          notify: true,
-        },
+          notify: true
+        }
       },
 
     });
