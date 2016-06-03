@@ -21,7 +21,7 @@
       <h3>Basic rc-db-table Demo</h3>
       <!-- <demo-snippet> -->
         <!-- <template> -->
-          <rc-db-table table-name="table01" desc="description" columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isAllowNull": true}]'></rc-db-table>
+          <rc-db-table table-name="table01" desc="description" columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isNullable": true}]'></rc-db-table>
           <br>
           <rc-db-table table-name="{{tableName}}" desc="description" columns="{{columns}}"></rc-db-table>
         <!-- </template> -->
@@ -34,9 +34,9 @@
         var template = document.querySelector('template[is="dom-bind"]');
         template.tableName = "table02";
         template.columns = [
-          {"isPrimaryKey": true, "isUnique": true, "isAllowNull": true, "isForeignKey": true, "name": "id", "type": "char(10)"},
-          {"isPrimaryKey": false, "isUnique": true, "isAllowNull": true, "isForeignKey": true, "name": "name", "type": "char(20)"},
-          {"isPrimaryKey": false, "isUnique": false, "isAllowNull": true, "isForeignKey": false, "name": "desc", "type": "char(20)"}
+          {"isPrimaryKey": true, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "id", "type": "char(10)"},
+          {"isPrimaryKey": false, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "name", "type": "char(20)"},
+          {"isPrimaryKey": false, "isUnique": false, "isNullable": true, "isForeignKey": false, "name": "desc", "type": "char(20)"}
         ];
 
       })();

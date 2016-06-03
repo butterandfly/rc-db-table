@@ -15,7 +15,7 @@ bower install --save rc-db-table
 ```html
 <rc-db-table table-name="table01"
              desc="description"
-             columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isAllowNull"  : true}]'>
+             columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isNullable"  : true}]'>
 </rc-db-table>
 ```
 
@@ -28,7 +28,7 @@ bower install --save rc-db-table
   // 是否唯一
   "isUnique": false,
   // 是否允许空
-  "isAllowNull": true,
+  "isNullable": true,
   // 是否为外键
   "isForeignKey": false,
   // 列名

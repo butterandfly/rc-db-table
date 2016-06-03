@@ -15,6 +15,7 @@
       }
 
       #check, #name, #type{
+        line-height: 12px;
         flex: 1;
       }
 
@@ -31,7 +32,6 @@
       #check > ul > li {
         flex: 1;
         color: #FF9800;
-        line-height: 12px;
         list-style: none;
         font-weight: bold;
         font-size: 12px;
@@ -52,16 +52,24 @@
       <span id="check">
         <ul>
           <li>
-            <iron-icon hidden$="[[!isPrimaryKey]]" icon="communication:vpn-key"></iron-icon>
+            <template is="dom-if" if="{{isPrimaryKey}}">
+              <iron-icon  icon="communication:vpn-key"></iron-icon>
+            </template>
           </li>
           <li>
-            <iron-icon hidden$="[[!isForeignKey]]" icon="hardware:keyboard-backspace"></iron-icon>
+            <template is="dom-if" if="{{isForeignKey}}">
+              <iron-icon icon="hardware:keyboard-backspace"></iron-icon>
+            </template>
           </li>
           <li>
-            <span hidden$="[[!isUnique]]">U</span>
+            <template is="dom-if" if="{{isUnique}}">
+              <span>U</span>
+            </template>
           </li>
           <li>
-            <span hidden$="[[!isAllowNull]]">[ ]</span>
+            <template is="dom-if" if="{{isNullable}}">
+              <span>[ ]</span>
+            </template>
           </li>
         </ul>
       </span>
@@ -90,7 +98,7 @@
           type: Boolean,
           value: false,
         },
-        isAllowNull: {
+        isNullable: {
           type: Boolean,
           value: false,
         },

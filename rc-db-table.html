@@ -17,8 +17,8 @@
         border: 1px solid #44B9DB;
       }
 
-      #header, #column, #desc {
-        padding: 5px 10px 5px 10px;
+      #header, #desc {
+        padding: 5px 0;
       }
 
       #header{
@@ -36,6 +36,15 @@
         background-color: #FFF;
         border-radius: 0 0 5px 5px;
       }
+
+      #columns {
+        padding: 2px 10px;
+        border-top: 1px solid #cccccc;
+      }
+
+      #columns:first-of-type{
+        border-top: none;
+      }
     </style>
     <div class="">
       <div id="header">
@@ -46,7 +55,7 @@
       </div>
       <div id="column">
         <template is="dom-repeat" items="{{columns}}">
-          <rc-db-column is-primary-key="{{item.isPrimaryKey}}" is-unique="{{item.isUnique}}" is-allow-null="{{item.isAllowNull}}" is-foreign-key="{{item.isForeignKey}}" name="{{item.name}}" type="{{item.type}}"></rc-db-column>
+          <rc-db-column id="columns" is-primary-key="{{item.isPrimaryKey}}" is-unique="{{item.isUnique}}" is-nullable="{{item.isNullable}}" is-foreign-key="{{item.isForeignKey}}" name="{{item.name}}" type="{{item.type}}"></rc-db-column>
         </template>
       </div>
     </div>
@@ -66,7 +75,7 @@
           type: String,
           notify: true
         },
-        
+
         /**
          * 表的描述。
          * @type String
@@ -75,7 +84,7 @@
           type: String,
           notify: true
         },
-        
+
         /**
          * 所含列。
          *
@@ -85,7 +94,7 @@
          * [{
          *   "isPrimaryKey": false,
          *   "isUnique": false,
-         *   "isAllowNull": true,
+         *   "isNullable": true,
          *   "isForeignKey": false,
          *   "name": "column1",
          *   "type": "char(20)"
