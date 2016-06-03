@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rc-db-table demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../rc-db-table.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+
+  <template is="dom-bind">
+    <div class="vertical-section-container centered">
+      <h3>Basic rc-db-table Demo</h3>
+      <!-- <demo-snippet> -->
+        <!-- <template> -->
+          <rc-db-table table-name="table01" desc="description" columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isNullable": true}]'></rc-db-table>
+          <br>
+          <rc-db-table table-name="{{tableName}}" desc="description" columns="{{columns}}"></rc-db-table>
+        <!-- </template> -->
+
+      <!-- </demo-snippet> -->
+    </div>
+  </template>
+    <script>
+      (function() {
+        var template = document.querySelector('template[is="dom-bind"]');
+        template.tableName = "table02";
+        template.columns = [
+          {"isPrimaryKey": true, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "id", "type": "char(10)"},
+          {"isPrimaryKey": false, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "name", "type": "char(20)"},
+          {"isPrimaryKey": false, "isUnique": false, "isNullable": true, "isForeignKey": false, "name": "desc", "type": "char(20)"}
+        ];
+
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/hardware-icons.html">
+<link rel="import" href="../iron-icons/communication-icons.html">
+
+<dom-module id="rc-db-column">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      div{
+        display: flex;
+        margin: 6px 0;
+      }
+
+      #check, #name, #type{
+        line-height: 12px;
+        flex: 1;
+      }
+
+      #check{
+        margin-right: 5px;
+      }
+
+      #check > ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      #check > ul > li {
+        flex: 1;
+        color: #FF9800;
+        list-style: none;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      iron-icon {
+        width: 12px;
+        height: 12px;
+      }
+
+      #type {
+        color: gray;
+      }
+
+    </style>
+
+    <div>
+      <span id="check">
+        <ul>
+          <li>
+            <template is="dom-if" if="{{isPrimaryKey}}">
+              <iron-icon  icon="communication:vpn-key"></iron-icon>
+            </template>
+          </li>
+          <li>
+            <template is="dom-if" if="{{isForeignKey}}">
+              <iron-icon icon="hardware:keyboard-backspace"></iron-icon>
+            </template>
+          </li>
+          <li>
+            <template is="dom-if" if="{{isUnique}}">
+              <span>U</span>
+            </template>
+          </li>
+          <li>
+            <template is="dom-if" if="{{isNullable}}">
+              <span>[ ]</span>
+            </template>
+          </li>
+        </ul>
+      </span>
+      <span id="name">[[name]]</span>
+      <span id="type">[[type]]</span>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'rc-db-column',
+
+      properties: {
+        name: String,
+        type: String,
+        isPrimaryKey: {
+          type: Boolean,
+          value: false,
+        },
+        isForeignKey: {
+          type: Boolean,
+          value: false,
+        },
+        isUnique: {
+          type: Boolean,
+          value: false,
+        },
+        isNullable: {
+          type: Boolean,
+          value: false,
+        },
+      },
+    });
+
+  </script>
+</dom-module>

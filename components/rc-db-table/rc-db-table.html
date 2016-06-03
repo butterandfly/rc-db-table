@@ -1,0 +1,114 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="rc-db-column.html">
+
+<!--
+`rc-db-table`可用来显示数据库表的内容。
+
+@demo demo/index.html
+-->
+
+<dom-module id="rc-db-table">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 220px;
+        border-radius: 6px;
+        border: 1px solid #44B9DB;
+      }
+
+      #header, #desc {
+        padding: 5px 0;
+      }
+
+      #header{
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+        background-color: #44B9DB;
+      }
+
+      #desc{
+        text-align: center;
+        background-color: #FFD67D;
+      }
+
+      #column{
+        background-color: #FFF;
+        border-radius: 0 0 5px 5px;
+      }
+
+      #columns {
+        padding: 2px 10px;
+        border-top: 1px solid #cccccc;
+      }
+
+      #columns:first-of-type{
+        border-top: none;
+      }
+    </style>
+    <div class="">
+      <div id="header">
+        [[tableName]]
+      </div>
+      <div id="desc">
+        [[desc]]
+      </div>
+      <div id="column">
+        <template is="dom-repeat" items="{{columns}}">
+          <rc-db-column id="columns" is-primary-key="{{item.isPrimaryKey}}" is-unique="{{item.isUnique}}" is-nullable="{{item.isNullable}}" is-foreign-key="{{item.isForeignKey}}" name="{{item.name}}" type="{{item.type}}"></rc-db-column>
+        </template>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'rc-db-table',
+
+      properties: {
+        /**
+         * 表名。
+         * @type String
+         */
+        tableName: {
+          type: String,
+          notify: true
+        },
+
+        /**
+         * 表的描述。
+         * @type String
+         */
+        desc: {
+          type: String,
+          notify: true
+        },
+
+        /**
+         * 所含列。
+         *
+         * ### 格式
+         *
+         * ```
+         * [{
+         *   "isPrimaryKey": false,
+         *   "isUnique": false,
+         *   "isNullable": true,
+         *   "isForeignKey": false,
+         *   "name": "column1",
+         *   "type": "char(20)"
+         * }]
+         * ```
+         *
+         * @type {Array}
+         */
+        columns: {
+          type: Array,
+          notify: true
+        }
+      },
+
+    });
+  </script>
+</dom-module>
