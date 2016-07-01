@@ -2,6 +2,10 @@
 <link rel="import" href="../iron-icons/hardware-icons.html">
 <link rel="import" href="../iron-icons/communication-icons.html">
 
+<!--
+`rc-db-column`可用来显示数据库表的列的内容。
+-->
+
 <dom-module id="rc-db-column">
   <template>
     <style>
@@ -21,6 +25,8 @@
 
       #check{
         margin-right: 5px;
+        max-width: 75px;
+        min-width: 75px;
       }
 
       #check > ul {
@@ -44,6 +50,11 @@
 
       #type {
         color: gray;
+      }
+
+      #name, #type {
+        max-width: 100px;
+        min-width: 100px;
       }
 
     </style>
@@ -75,6 +86,7 @@
       </span>
       <span id="name">[[name]]</span>
       <span id="type">[[type]]</span>
+      <span id="comments">[[comments]]</span>
     </div>
   </template>
 
@@ -84,24 +96,52 @@
       is: 'rc-db-column',
 
       properties: {
+        /**
+         * 列名。
+         */
         name: String,
+
+        /**
+         * 列类型。
+         */
         type: String,
+
+        /**
+         * 列注释。
+         */
+        comments: String,
+
+        /**
+         * 是否为主键。
+         */
         isPrimaryKey: {
           type: Boolean,
           value: false,
         },
+
+        /**
+         * 是否为主键。
+         */
         isForeignKey: {
           type: Boolean,
           value: false,
         },
+
+        /**
+         * 是否唯一。
+         */
         isUnique: {
           type: Boolean,
           value: false,
         },
+
+        /**
+         * 是否可为空。
+         */
         isNullable: {
           type: Boolean,
           value: false,
-        },
+        }
       },
     });
 

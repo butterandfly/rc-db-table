@@ -7,7 +7,7 @@
 确保你已经有npm及bower，然后在项目内：
 
 ```sh
-bower install --save rc-db-table
+bower install --save butterandfly/rc-db-table
 ```
 
 ## Usage

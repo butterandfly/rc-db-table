@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="rc-db-column.html">
+<link rel="import" href="./rc-db-column.html">
 
 <!--
 `rc-db-table`可用来显示数据库表的内容。
@@ -12,7 +12,7 @@
     <style>
       :host {
         display: block;
-        width: 220px;
+        width: 400px;
         border-radius: 6px;
         border: 1px solid #44B9DB;
       }
@@ -55,7 +55,7 @@
       </div>
       <div id="column">
         <template is="dom-repeat" items="{{columns}}">
-          <rc-db-column id="columns" is-primary-key="{{item.isPrimaryKey}}" is-unique="{{item.isUnique}}" is-nullable="{{item.isNullable}}" is-foreign-key="{{item.isForeignKey}}" name="{{item.name}}" type="{{item.type}}"></rc-db-column>
+          <rc-db-column id="columns" comments="{{item.comments}}" is-primary-key="{{item.isPrimaryKey}}" is-unique="{{item.isUnique}}" is-nullable="{{item.isNullable}}" is-foreign-key="{{item.isForeignKey}}" name="{{item.name}}" type="{{item.type}}"></rc-db-column>
         </template>
       </div>
     </div>
@@ -97,7 +97,8 @@
          *   "isNullable": true,
          *   "isForeignKey": false,
          *   "name": "column1",
-         *   "type": "char(20)"
+         *   "type": "char(20)",
+         *   "comments": "some comments"
          * }]
          * ```
          *

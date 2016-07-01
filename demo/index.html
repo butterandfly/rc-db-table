@@ -7,7 +7,6 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 
     <link rel="import" href="../rc-db-table.html">
 
@@ -19,27 +18,22 @@
   <template is="dom-bind">
     <div class="vertical-section-container centered">
       <h3>Basic rc-db-table Demo</h3>
-      <!-- <demo-snippet> -->
-        <!-- <template> -->
-          <rc-db-table table-name="table01" desc="description" columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isNullable": true}]'></rc-db-table>
-          <br>
-          <rc-db-table table-name="{{tableName}}" desc="description" columns="{{columns}}"></rc-db-table>
-        <!-- </template> -->
-
-      <!-- </demo-snippet> -->
+        <rc-db-table table-name="table01" desc="description" columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isNullable": true}]'></rc-db-table>
+        <br>
+        <rc-db-table table-name="{{tableName}}" desc="description" columns="{{columns}}"></rc-db-table>
     </div>
   </template>
-    <script>
-      (function() {
-        var template = document.querySelector('template[is="dom-bind"]');
-        template.tableName = "table02";
-        template.columns = [
-          {"isPrimaryKey": true, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "id", "type": "char(10)"},
-          {"isPrimaryKey": false, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "name", "type": "char(20)"},
-          {"isPrimaryKey": false, "isUnique": false, "isNullable": true, "isForeignKey": false, "name": "desc", "type": "char(20)"}
-        ];
 
-      })();
-    </script>
+  <script>
+    (function() {
+      var template = document.querySelector('template[is="dom-bind"]');
+      template.tableName = "table02";
+      template.columns = [
+        {"isPrimaryKey": true, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "id", "type": "char(10)", "comments": "很长很长很长很长很长很长很长很长很长的说明"},
+        {"isPrimaryKey": false, "isUnique": true, "isNullable": true, "isForeignKey": true, "name": "name", "type": "char(20)", "comments": "短"},
+        {"isPrimaryKey": false, "isUnique": false, "isNullable": true, "isForeignKey": false, "name": "desc", "type": "char(20)", "comments": "楼上你怎么能说别人短"}
+      ];
+    })();
+  </script>
   </body>
 </html>

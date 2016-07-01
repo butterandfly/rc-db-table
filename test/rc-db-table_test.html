@@ -20,10 +20,22 @@
 
     <script>
       suite('rc-db-table', function() {
+        let table;
 
-        test('instantiating the element works', function() {
-          let element = fixture('basic');
-          assert.equal(element.is, 'rc-db-table');
+        setup(function() {
+          table = fixture('basic');
+        })
+
+        test('显示表名', function() {
+          table.tableName = '炫酷表名';
+
+          assert.equal(table.querySelector('#header').textContent.trim(), '炫酷表名');
+        });
+
+        test('显示描述', function() {
+          table.desc = '炫酷描述';
+
+          assert.equal(table.querySelector('#desc').textContent.trim(), '炫酷描述');
         });
 
       });
