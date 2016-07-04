@@ -15,7 +15,7 @@ bower install --save butterandfly/rc-db-table
 ```html
 <rc-db-table table-name="table01"
              desc="description"
-             columns='[{"name":"id","type": "char(20)", "isPrimaryKey": true, "isForeignKey": true, "isUnique": true, "isNullable"  : true}]'>
+             columns='[{"name":"id","type": "char(20)", "isPrimaryKey": "na", "isForeignKey": true, "isUnique": true, "isNullable"  : true}]'>
 </rc-db-table>
 ```
 
@@ -23,13 +23,16 @@ bower install --save butterandfly/rc-db-table
 
 ```js
 {
-  // 是否为主键
+  // 是否为主键，值为true、false或"na"（不知道）
   "isPrimaryKey": false,
   // 是否唯一
+  // 值为true、false或"na"（不知道）
   "isUnique": false,
   // 是否允许空
+  // 值为true、false或"na"（不知道）
   "isNullable": true,
   // 是否为外键
+  // 值为true、false或"na"（不知道）
   "isForeignKey": false,
   // 列名
   "name": "desc",

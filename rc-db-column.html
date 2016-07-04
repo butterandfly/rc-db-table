@@ -25,8 +25,8 @@
 
       #check{
         margin-right: 5px;
-        max-width: 75px;
-        min-width: 75px;
+        max-width: 100px;
+        min-width: 100px;
       }
 
       #check > ul {
@@ -37,7 +37,6 @@
 
       #check > ul > li {
         flex: 1;
-        color: #FF9800;
         list-style: none;
         font-weight: bold;
         font-size: 12px;
@@ -58,30 +57,39 @@
         word-wrap: break-word;
       }
 
+      .exist {
+        color: #FF9800;
+      }
+
+      .unexist {
+        opacity: 0;
+      }
+
+      .unknow {
+        color: #777;
+      }
+
+      .unknow::after {
+        color: #777;
+        content: "?";
+      }
+
     </style>
 
     <div>
       <span id="check">
         <ul>
-          <li>
-            <template is="dom-if" if="{{isPrimaryKey}}">
-              <iron-icon  icon="communication:vpn-key"></iron-icon>
-            </template>
+          <li class$="{{_computeClass(isPrimaryKey)}}" >
+            <iron-icon icon="communication:vpn-key"></iron-icon>
           </li>
-          <li>
-            <template is="dom-if" if="{{isForeignKey}}">
-              <iron-icon icon="hardware:keyboard-backspace"></iron-icon>
-            </template>
+          <li class$="{{_computeClass(isForeignKey)}}">
+            <iron-icon icon="hardware:keyboard-backspace"></iron-icon>
           </li>
-          <li>
-            <template is="dom-if" if="{{isUnique}}">
-              <span>U</span>
-            </template>
+          <li class$="{{_computeClass(isUnique)}}">
+            <span>U</span>
           </li>
-          <li>
-            <template is="dom-if" if="{{isNullable}}">
-              <span>[ ]</span>
-            </template>
+          <li class$="{{_computeClass(isNullable)}}">
+            <span>[ ]</span>
           </li>
         </ul>
       </span>
@@ -144,6 +152,19 @@
           value: false
         }
       },
+
+      // 返回对应的class，包括"exist"、"unexist"、"unknow"
+      _computeClass: function(prop) {
+        if (prop === 'na') {
+          return 'unknow';
+        }
+
+        if (prop) {
+          return 'exist';
+        }
+
+        return 'unexist';
+      }
     });
 
   </script>
